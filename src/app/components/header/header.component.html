@@ -1,0 +1,19 @@
+<div class="px-8 py-6 border-b bg-white">
+  <div class="flex items-center gap-4">
+
+    <!-- Direkt logo -->
+    <img 
+      *ngIf="logoUrl"
+      [src]="logoUrl"
+      alt="logo"
+      class="h-12 object-contain"
+    >
+
+    <div>
+      <div class="text-sm text-zinc-500">
+        {{ subtitle }}
+      </div>
+    </div>
+
+  </div>
+</div>

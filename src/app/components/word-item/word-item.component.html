@@ -1,0 +1,21 @@
+<div class="border rounded-2xl p-4 hover:bg-zinc-50">
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0">
+      <div class="text-xs text-zinc-500">{{ entry.wordDate }}</div>
+      <div class="text-lg font-semibold truncate">{{ entry.word }}</div>
+      <div class="text-sm text-zinc-600 mt-1 whitespace-pre-wrap">{{ entry.description }}</div>
+    </div>
+
+    <div class="flex flex-col gap-2 shrink-0">
+      <button class="px-3 py-2 rounded-xl border bg-white hover:bg-zinc-50 text-sm" (click)="edit.emit(entry)">
+        Düzenle
+      </button>
+      <button
+        class="px-3 py-2 rounded-xl border border-red-200 bg-white hover:bg-red-50 text-sm text-red-600"
+        (click)="remove.emit(entry)"
+      >
+        Sil
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<app-header
+  [subtitle]="'Her gün 1 kelime • CRUD + LocalStorage'"
+  [logoUrl]="'/assets/images/logo.png'">
+</app-header>
+
+<div class="px-6 py-6 max-w-5xl mx-auto">
+
+  <!-- Stats (stat-card yok, inline) -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="bg-white border rounded-2xl p-4">
+      <div class="text-sm text-zinc-500">Toplam Kelime</div>
+      <div class="text-2xl font-bold">{{ stats().total }}</div>
+    </div>
+    <div class="bg-white border rounded-2xl p-4">
+      <div class="text-sm text-zinc-500">Bu Ay</div>
+      <div class="text-2xl font-bold">{{ stats().thisMonth }}</div>
+    </div>
+    <div class="bg-white border rounded-2xl p-4">
+      <div class="text-sm text-zinc-500">Bugün</div>
+      <div class="text-2xl font-bold">{{ stats().today }}</div>
+    </div>
+  </div>
+
+  <div class="mt-4 flex justify-end">
+    <button class="px-4 py-2 rounded-xl border bg-white hover:bg-zinc-50 text-sm" (click)="resetAll()">
+      Verileri Sıfırla
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+    <!-- FORM (word-form yok, inline) -->
+    <div class="bg-white border rounded-2xl p-5">
+      <div class="flex items-center justify-between">
+        <div class="text-base font-semibold">{{ editingId ? 'Kelimeyi Düzenle' : 'Yeni Kelime Ekle' }}</div>
+        <button class="text-sm text-zinc-500 hover:text-zinc-900" (click)="startCreate()">Temizle</button>
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <div>
+          <label class="text-xs text-zinc-500">Tarih (günün kelimesi)</label>
+          <input type="date"
+            class="mt-1 w-full border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-200"
+            [(ngModel)]="wordDate">
+        </div>
+
+        <div>
+          <label class="text-xs text-zinc-500">Kelime</label>
+          <input type="text"
+            class="mt-1 w-full border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-200"
+            [(ngModel)]="word">
+        </div>
+
+        <div>
+          <label class="text-xs text-zinc-500">Açıklama</label>
+          <textarea
+            class="mt-1 w-full border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-200 min-h-[110px]"
+            [(ngModel)]="description"></textarea>
+        </div>
+
+        <div *ngIf="error" class="text-sm text-red-600">{{ error }}</div>
+
+        <div class="flex gap-2">
+          <button class="px-4 py-2 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 text-sm" (click)="save()">
+            {{ editingId ? 'Güncelle' : 'Kaydet' }}
+          </button>
+          <button *ngIf="editingId"
+            class="px-4 py-2 rounded-xl border bg-white hover:bg-zinc-50 text-sm"
+            (click)="startCreate()">
+            İptal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LISTE -->
+    <div class="bg-white border rounded-2xl p-5">
+      <div class="text-base font-semibold">Kayıtlar</div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+        <select class="border rounded-xl px-3 py-2 text-sm bg-white" [(ngModel)]="filterYear">
+          <option value="all">Tüm Yıllar</option>
+          <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+        </select>
+
+        <select class="border rounded-xl px-3 py-2 text-sm bg-white" [(ngModel)]="filterMonth">
+          <option value="all">Tüm Aylar</option>
+          <option *ngFor="let m of months()" [value]="m.value">{{ m.label }}</option>
+        </select>
+
+        <input class="border rounded-xl px-3 py-2 text-sm" placeholder="Ara..." [(ngModel)]="search">
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <div *ngFor="let e of filteredEntries" class="border rounded-2xl p-4 hover:bg-zinc-50">
+          <div class="flex items-start justify-between gap-4">
+            <div class="min-w-0">
+              <div class="text-xs text-zinc-500">{{ e.wordDate }}</div>
+              <div class="text-lg font-semibold truncate">{{ e.word }}</div>
+              <div class="text-sm text-zinc-600 mt-1 whitespace-pre-wrap">{{ e.description }}</div>
+            </div>
+
+            <div class="flex flex-col gap-2 shrink-0">
+              <button class="px-3 py-2 rounded-xl border bg-white hover:bg-zinc-50 text-sm" (click)="startEdit(e)">
+                Düzenle
+              </button>
+              <button class="px-3 py-2 rounded-xl border border-red-200 bg-white hover:bg-red-50 text-sm text-red-600"
+                (click)="remove(e)">
+                Sil
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="filteredEntries.length === 0" class="text-sm text-zinc-500 py-8 text-center">
+          Kayıt yok.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

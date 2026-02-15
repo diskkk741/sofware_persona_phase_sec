@@ -1,0 +1,54 @@
+<div class="bg-white border rounded-2xl p-5">
+  <div class="flex items-center justify-between">
+    <div class="text-base font-semibold">{{ isEdit ? 'Kelimeyi Düzenle' : 'Yeni Kelime Ekle' }}</div>
+    <button class="text-sm text-zinc-500 hover:text-zinc-900" (click)="clear.emit()">Temizle</button>
+  </div>
+
+  <div class="mt-4 space-y-3">
+    <div>
+      <label class="text-xs text-zinc-500">Tarih (günün kelimesi)</label>
+      <input
+        type="date"
+        class="mt-1 w-full border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-200"
+        [ngModel]="wordDate"
+        (ngModelChange)="wordDateChange.emit($event)"
+      >
+    </div>
+
+    <div>
+      <label class="text-xs text-zinc-500">Kelime</label>
+      <input
+        type="text"
+        class="mt-1 w-full border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-200"
+        placeholder="ör. mütemadiyen"
+        [ngModel]="word"
+        (ngModelChange)="wordChange.emit($event)"
+      >
+    </div>
+
+    <div>
+      <label class="text-xs text-zinc-500">Açıklama</label>
+      <textarea
+        class="mt-1 w-full border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-200 min-h-[110px]"
+        placeholder="kısa açıklama..."
+        [ngModel]="description"
+        (ngModelChange)="descriptionChange.emit($event)"
+      ></textarea>
+    </div>
+
+    <div *ngIf="error" class="text-sm text-red-600">{{ error }}</div>
+
+    <div class="flex gap-2">
+      <button class="px-4 py-2 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 text-sm" (click)="save.emit()">
+        {{ isEdit ? 'Güncelle' : 'Kaydet' }}
+      </button>
+
+      <button *ngIf="isEdit"
+        class="px-4 py-2 rounded-xl border bg-white hover:bg-zinc-50 text-sm"
+        (click)="cancel.emit()"
+      >
+        İptal
+      </button>
+    </div>
+  </div>
+</div>
