@@ -92,9 +92,7 @@ Canlı bağlantı:
 
 ## Ekran Görüntüsü
 
-```
-screenshots/home.png
-```
+![Uygulama Görünümü](screenshots/home.png)
 
 ---
 
