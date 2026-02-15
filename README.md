@@ -1,93 +1,108 @@
-birkelime. – Angular CRUD Projesi
-Proje Açıklaması
+# birkelime. – Angular CRUD Projesi
 
-Bu proje, Web Geliştirme eğitimi kapsamında Angular framework kullanılarak geliştirilmiş bir frontend uygulamasıdır.
+## Proje Açıklaması
+
+Bu proje, Web Geliştirme eğitimi kapsamında Angular framework kullanılarak geliştirilmiş bir frontend uygulamasıdır.  
 Amaç, her gün bir yeni kelime ekleyerek kişisel bir kelime arşivi oluşturmak ve temel CRUD işlemlerini uygulamaktır.
 
 Uygulama tamamen frontend tabanlıdır ve veriler LocalStorage üzerinde saklanmaktadır.
 
-Kullanılan Teknolojiler
+---
 
-Angular
+## Kullanılan Teknolojiler
 
-TypeScript
+- Angular  
+- TypeScript  
+- Tailwind CSS  
+- LocalStorage  
+- HTML / CSS  
 
-Tailwind CSS
+---
 
-LocalStorage
+## Uygulama Özellikleri
 
-HTML / CSS
+- Yeni kelime ekleme  
+- Kelime listeleme  
+- Kelime güncelleme  
+- Kelime silme  
+- Yıl ve ay bazlı filtreleme  
+- Arama filtresi  
+- Toplam kelime istatistiği  
 
-Uygulama Özellikleri
+---
 
-Yeni kelime ekleme
+## Proje Yapısı
 
-Kelime listeleme
-
-Kelime güncelleme
-
-Kelime silme
-
-Yıl ve ay bazlı filtreleme
-
-Arama filtresi
-
-Toplam kelime istatistiği
-
-Proje Yapısı
+```
 src/
- ├── app/
- │   ├── components/
- │   ├── pages/
- │   ├── interfaces/
- │   ├── services/
- │   ├── app.module.ts
- │   └── app.component.ts
+ └── app/
+     ├── components/
+     ├── pages/
+     ├── interfaces/
+     ├── services/
+     ├── app.module.ts
+     └── app.component.ts
+```
 
-Kurulum
+---
+
+## Kurulum
 
 Projeyi klonladıktan sonra:
 
+```
 npm install
 ng serve
-
+```
 
 Uygulama varsayılan olarak:
 
+```
 http://localhost:4200
-
+```
 
 adresinde çalışır.
 
-Build Alma
-ng build
+---
 
+## Build Alma
+
+```
+ng build
+```
 
 Build çıktısı:
 
+```
 dist/
-
+```
 
 klasörüne oluşturulur.
 
-Canlı Yayın
+---
+
+## Canlı Yayın
 
 Proje Netlify üzerinden yayınlanmıştır.
 
-Canlı bağlantı:
-(Buraya Netlify linkini ekleyeceksin.)
+Canlı bağlantı:  
+(Buraya Netlify linkini ekleyin.)
 
-Ekran Görüntüsü
+---
+
+## Ekran Görüntüsü
+
+```
 screenshots/home.png
+```
 
-Amaç
+---
+
+## Amaç
 
 Bu proje ile:
 
-Angular component yapısı kullanılmıştır.
-
-CRUD mantığı uygulanmıştır.
-
-Modern CSS yaklaşımı (Tailwind) entegre edilmiştir.
-
-Git ve GitHub workflow deneyimi kazanılmıştır.
+- Angular component yapısı kullanılmıştır.
+- CRUD mantığı uygulanmıştır.
+- Tailwind CSS entegrasyonu yapılmıştır.
+- Git ve GitHub workflow deneyimi kazanılmıştır.
