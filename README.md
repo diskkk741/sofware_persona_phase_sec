@@ -86,7 +86,7 @@ klasörüne oluşturulur.
 Proje Netlify üzerinden yayınlanmıştır.
 
 Canlı bağlantı:  
-(Buraya Netlify linkini ekleyin.)
+https://softwarepersonawebao.netlify.app/
 
 ---
 
